@@ -2,4 +2,4 @@ Options All -Indexes
 
 RewriteEngine On
 
-RewriteRule ^([-a-zA-z0-9]+)$ index.php?ruta=$1
+RewriteRule ^([-a-zA-Z0-9]+)$ index.php?ruta=$1

@@ -1,34 +1,49 @@
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Pagina no encontrada
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="Inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li class="active">Pagina no encontrada</li>
-      </ol>
-    </section>
+<div class="content-wrapper">
 
-    <!-- Main content -->
-    <section class="content">
+  <section class="content-header">
+    
+    <h1>
+      
+      Página no encontrada
+    
+    </h1>
+
+    <ol class="breadcrumb">
+      
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      
+      <li class="active">Página no encontrada</li>
+    
+    </ol>
+
+  </section>
+
+  <section class="content">
 
     <div class="error-page">
-    <h2 class="headline text-primary">404</h2>
-    <div class="error-content">
-    </div>
-    <h3><i class="fa fa-warning text-primary"></i>
-    Oops! Pagina no encontrada.</h3>
-    <p>
-            Ingresa el menu lateral y alli podras encontrar las paginas 
-            disponibles.
-            Tambien puedes recargar haciendo <a href="inicio">clic aqui</a>
-    </p>
+      
+      <h2 class="headline text-primary">404</h2> 
 
-    </div>
+      <div class="error-content">
 
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+        <h3>
+
+          <i class="fa fa-warning text-primary"></i> 
+
+          Ooops! Página no encontrada.
+
+        </h3>
+
+        <p>
+        
+           Ingresa al menú lateral y allí podrás encontrar las páginas disponibles. También puedes regresar haciendo <a href="inicio">click aquí.</a>
+        
+        </p>
+
+      </div>
+
+    </div>  
+
+  </section>
+
+</div>
