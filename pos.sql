@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 01-09-2022 a las 02:14:54
+-- Servidor: localhost
+-- Tiempo de generación: 01-09-2022 a las 19:26:57
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -40,7 +40,33 @@ CREATE TABLE `categorias` (
 INSERT INTO `categorias` (`id`, `categoria`, `fecha`) VALUES
 (1, 'STOCK', '2022-08-30 19:39:55'),
 (2, 'MOLUCELLA', '2022-08-30 19:40:11'),
-(4, 'Flores', '2022-08-31 04:30:50');
+(4, 'Flores12', '2022-09-01 03:16:24');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clientes`
+--
+
+CREATE TABLE `clientes` (
+  `id` int(11) NOT NULL,
+  `nombre` text NOT NULL,
+  `documento` int(11) NOT NULL,
+  `email` text NOT NULL,
+  `telefono` text NOT NULL,
+  `direccion` text NOT NULL,
+  `pais` text NOT NULL,
+  `compras` int(11) DEFAULT 0,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`id`, `nombre`, `documento`, `email`, `telefono`, `direccion`, `pais`, `compras`, `fecha`) VALUES
+(2, 'LAZ  CAMION SAGIR', 21030120, 'rasa@esed.com', '(923) 231-9222', 'ECUADOR', 'USA', 0, '2022-09-01 03:06:01'),
+(4, 'TOP QUALITY', 93030202, 'topq@gmail.com', '(593) 983-2021', 'Florida', 'USA', 0, '2022-09-01 03:05:25');
 
 -- --------------------------------------------------------
 
@@ -54,7 +80,7 @@ CREATE TABLE `productos` (
   `codigo` text NOT NULL,
   `nombre` text NOT NULL,
   `precio_venta` float NOT NULL,
-  `ventas` int(11) DEFAULT NULL
+  `ventas` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -90,10 +116,28 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `password`, `perfil`, `foto`, `estado`, `ultimo_login`, `fecha`) VALUES
-(1, 'Administrador', 'admin', '$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG', 'Administrador', 'vistas/img/usuarios/admin/191.jpg', 1, '2022-08-27 00:23:18', '2022-08-30 19:37:48'),
-(60, 'Ricky Iza', 'raiza1', '$2a$07$asxx54ahjppf45sd87a5auCl04kU/yTwuim5AU27iSDAZb1AvSmNu', 'Administrador', 'vistas/img/usuarios/raiza1/287.jpg', 1, '2022-08-31 19:09:54', '2022-09-01 00:09:54'),
+(1, 'Administrador', 'admin', '$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG', 'Administrador', 'vistas/img/usuarios/admin/191.jpg', 1, '2022-08-31 21:18:55', '2022-09-01 02:18:55'),
+(60, 'Ricky Iza', 'raiza1', '$2a$07$asxx54ahjppf45sd87a5auCl04kU/yTwuim5AU27iSDAZb1AvSmNu', 'Administrador', 'vistas/img/usuarios/raiza1/287.jpg', 1, '2022-08-31 22:54:48', '2022-09-01 03:54:48'),
 (61, 'Luis Camalle', 'luis7', '$2a$07$asxx54ahjppf45sd87a5auqffV7nCfWWvdlALBf86lGhwJgrIO8Um', 'Administrador', 'vistas/img/usuarios/luis7/590.jpg', 1, '2022-08-26 22:50:06', '2022-08-28 04:32:59'),
 (62, 'Daysi Obando', 'daysi1', '$2a$07$asxx54ahjppf45sd87a5auRaW.R0GF2jb65MHXwNUkNMKhS1u5HlO', 'Vendedor', '', 1, '2022-08-31 19:09:39', '2022-09-01 00:09:39');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ventas`
+--
+
+CREATE TABLE `ventas` (
+  `id` int(11) NOT NULL,
+  `codigo` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `id_vendedor` int(11) NOT NULL,
+  `productos` text NOT NULL,
+  `impuesto` float NOT NULL,
+  `neto` float NOT NULL,
+  `total` float NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tablas volcadas
@@ -103,6 +147,12 @@ INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `password`, `perfil`, `foto`,
 -- Indices de la tabla `categorias`
 --
 ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `clientes`
+--
+ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -118,6 +168,12 @@ ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -125,6 +181,12 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `clientes`
+--
+ALTER TABLE `clientes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
@@ -138,6 +200,12 @@ ALTER TABLE `productos`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+
+--
+-- AUTO_INCREMENT de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
