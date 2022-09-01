@@ -11,12 +11,12 @@ session_start();
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Inventory System</title>
+  <title>Wendy Flowers</title>
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-  <link rel="icon" href="vistas/img/plantilla/icono-negro.png">
+  <link rel="icon" href="vistas/img/plantilla/flores-icono.png">
 
    <!--=====================================
   PLUGINS DE CSS
@@ -146,6 +146,7 @@ CUERPO DOCUMENTO
 
 <script src="vistas/js/plantilla.js"></script>
 <script src="vistas/js/usuarios.js"></script>
-
+<script src="vistas/js/categorias.js"></script>
+<script src="vistas/js/productos.js"></script>
 </body>
 </html>

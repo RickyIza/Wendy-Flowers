@@ -4,8 +4,8 @@
   
   <div class="login-logo">
 
-    <img src="vistas/img/plantilla/logo-blanco-bloque.png" class="img-responsive" style="padding:30px 100px 0px 100px">
-
+    <img src="vistas/img/plantilla/fondo_final_wendy.png" class="img-responsive" style="padding:30px 100px 0px 100px">
+ 
   </div>
 
   <div class="login-box-body">

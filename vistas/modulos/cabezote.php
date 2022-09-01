@@ -8,7 +8,7 @@
 		<!-- logo mini -->
 		<span class="logo-mini">
 			
-			<img src="vistas/img/plantilla/icono-blanco.png" class="img-responsive" style="padding:10px">
+			<img src="vistas/img/plantilla/lavanda.png" class="img-responsive" style="padding:10px">
 
 		</span>
 
@@ -16,7 +16,7 @@
 
 		<span class="logo-lg">
 			
-			<img src="vistas/img/plantilla/logo-blanco-lineal.png" class="img-responsive" style="padding:10px 0px">
+			<img src="vistas/img/plantilla/wendy_logo.png" class="img-responsive" style="padding:10px 0px">
 
 		</span>
 
