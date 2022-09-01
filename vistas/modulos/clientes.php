@@ -43,13 +43,12 @@
            <th style="width:10px">#</th>
            <th>Nombre</th>
            <th>Documento ID</th>
-           <th>Email</th>
+           <th>Correo</th>
            <th>Teléfono</th>
            <th>Dirección</th>
            <th>Pais</th>
            <th>Total compras</th>
            <th>Última compra</th>
-           <th>Ingreso al sistema</th>
            <th>Acciones</th>
 
          </tr> 
@@ -57,6 +56,53 @@
         </thead>
 
         <tbody>
+        <?php
+
+          $item = null;
+          $valor = null;
+
+          $clientes = ControladorClientes::ctrMostrarClientes($item, $valor);
+
+          foreach ($clientes as $key => $value) {
+            
+
+            echo '<tr>
+
+                    <td>'.($key+1).'</td>
+
+                    <td>'.$value["nombre"].'</td>
+
+                    <td>'.$value["documento"].'</td>
+
+                    <td>'.$value["email"].'</td>
+
+                    <td>'.$value["telefono"].'</td>
+
+                    <td>'.$value["direccion"].'</td>
+
+                    <td>'.$value["pais"].'</td>             
+
+                    <td>'.$value["compras"].'</td>
+
+                    <td>'.$value["fecha"].'</td>
+
+                    <td>
+
+                      <div class="btn-group">
+                          
+                        <button class="btn btn-warning btnEditarCliente" data-toggle="modal" data-target="#modalEditarCliente" idCliente="'.$value["id"].'"><i class="fa fa-pencil"></i></button>
+
+                        <button class="btn btn-danger btnEliminarCliente" idCliente="'.$value["id"].'"><i class="fa fa-times"></i></button>
+
+                      </div>  
+
+                    </td>
+
+                  </tr>';
+          
+            }
+
+        ?>
 
 
         </tbody>
@@ -139,7 +185,7 @@ MODAL AGREGAR CLIENTE
               
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span> 
 
-                <input type="email" class="form-control input-lg" name="nuevoEmail" placeholder="Ingresar email" required>
+                <input type="email" class="form-control input-lg" name="nuevoEmail" placeholder="Ingresar correo electronico" required>
 
               </div>
 
@@ -153,7 +199,7 @@ MODAL AGREGAR CLIENTE
               
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevoTelefono" placeholder="Ingresar teléfono" data-inputmask="'mask':'(999) 999-9999'" data-mask required>
+                <input type="text" class="form-control input-lg" name="nuevoTelefono" placeholder="Ingresar numero de telefono" data-inputmask="'mask':'(999) 999-9999'" data-mask required>
 
               </div>
 
@@ -172,20 +218,20 @@ MODAL AGREGAR CLIENTE
               </div>
 
             </div>
-
-             <!-- ENTRADA PARA LA FECHA DE NACIMIENTO -->
+            <!-- ENTRADA PARA EL PAIS -->
             
             <div class="form-group">
               
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+                <input type="text" class="form-control input-lg" name="nuevoPais" placeholder="Ingresar el pais" required>
 
               </div>
 
             </div>
+
   
           </div>
 
@@ -205,7 +251,12 @@ MODAL AGREGAR CLIENTE
 
       </form>
 
+      <?php
 
+        $crearCliente = new ControladorClientes();
+        $crearCliente -> ctrCrearCliente();
+
+      ?>
 
     </div>
 
@@ -315,7 +366,7 @@ MODAL EDITAR CLIENTE
 
             </div>
 
-             <!-- ENTRADA PARA LA FECHA DE NACIMIENTO -->
+             <!-- ENTRADA PARA EL PAIS -->
             
             <div class="form-group">
               
@@ -323,7 +374,7 @@ MODAL EDITAR CLIENTE
               
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="editarFechaNacimiento" id="editarFechaNacimiento"  data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+                <input type="text" class="form-control input-lg" name="editarPais" id="editarPais" required>
 
               </div>
 
@@ -348,7 +399,12 @@ MODAL EDITAR CLIENTE
       </form>
 
 
-    
+      <?php
+
+      $editarCliente = new ControladorClientes();
+      $editarCliente -> ctrEditarCliente();
+
+      ?>
 
     </div>
 
@@ -356,6 +412,13 @@ MODAL EDITAR CLIENTE
 
 </div>
 
+
+<?php
+
+  $eliminarCliente = new ControladorClientes();
+  $eliminarCliente -> ctrEliminarCliente();
+
+?>
 
 
 
