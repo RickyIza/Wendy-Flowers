@@ -101,6 +101,18 @@
 
 					<li>
 
+						<a href="crear-etiqueta">
+							
+							<i class="fa fa-circle-o"></i>
+							<span>Crear etiqueta</span>
+
+						</a>
+
+					</li>
+
+
+					<li>
+
 						<a href="reportes">
 							
 							<i class="fa fa-circle-o"></i>

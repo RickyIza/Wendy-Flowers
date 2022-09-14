@@ -151,8 +151,6 @@
                 BOTÓN PARA AGREGAR PRODUCTO
                 ======================================-->
 
-                <button type="button" class="btn btn-default hidden-lg btnAgregarProducto">Agregar producto</button>
-
                 <hr>
 
                 <div class="row">
@@ -168,7 +166,7 @@
                       <thead>
 
                         <tr>
-                          <th>Impuesto</th>
+                      
                           <th>Total</th>      
                         </tr>
 
@@ -180,17 +178,7 @@
                           
                           <td style="width: 50%">
                             
-                            <div class="input-group">
-                           
-                              <input type="number" class="form-control input-lg" min="0" id="nuevoImpuestoVenta" name="nuevoImpuestoVenta" placeholder="0" required>
 
-                               <input type="hidden" name="nuevoPrecioImpuesto" id="nuevoPrecioImpuesto" required>
-
-                               <input type="hidden" name="nuevoPrecioNeto" id="nuevoPrecioNeto" required>
-
-                              <span class="input-group-addon"><i class="fa fa-percent"></i></span>
-                        
-                            </div>
 
                           </td>
 
@@ -286,7 +274,6 @@
                  <tr>
                   <th style="width: 10px">#</th>
                   <th>Nombre</th>
-                  <th>Código</th>
                   <th>Categoria</th>
                   <th>Precio</th>
                   <th>Acciones</th>

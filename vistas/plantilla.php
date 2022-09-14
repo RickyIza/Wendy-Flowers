@@ -74,6 +74,13 @@ session_start();
    <script src="vistas/plugins/input-mask/jquery.inputmask.js"></script>
   <script src="vistas/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
   <script src="vistas/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+   <!-- Htmls -->
+  <script src="vistas/plugins/html2canvas/html2canvas.js"></script>
+   <!-- Fontawesome -->
+  <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
 
 </head>
 
@@ -110,10 +117,13 @@ CUERPO DOCUMENTO
       if($_GET["ruta"] == "inicio" ||
          $_GET["ruta"] == "usuarios" ||
          $_GET["ruta"] == "categorias" ||
+         $_GET["ruta"] == "login1" ||
          $_GET["ruta"] == "productos" ||
          $_GET["ruta"] == "clientes" ||
          $_GET["ruta"] == "ventas" ||
          $_GET["ruta"] == "crear-venta" ||
+         $_GET["ruta"] == "crear-etiqueta" ||
+         $_GET["ruta"] == "crear-etiqueta1" ||
          $_GET["ruta"] == "reportes" ||
          $_GET["ruta"] == "salir"){
 

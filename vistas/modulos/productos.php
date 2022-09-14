@@ -41,8 +41,8 @@
          <tr>
            
            <th style="width:10px">#</th>
-           <th>Nombre</th>
            <th>Codigo</th>
+           <th>Nombre</th>
            <th>Categoria</th>
            <th>Precio</th>
            <th>Acciones</th>

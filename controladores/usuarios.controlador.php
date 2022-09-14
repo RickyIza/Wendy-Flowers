@@ -181,7 +181,7 @@ class ControladorUsuarios{
 						type: "success",
 						title: "¡El usuario ha sido guardado correctamente!",
 						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
+						confirmButtonText: "OK"
 
 					}).then(function(result){
 
