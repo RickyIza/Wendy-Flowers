@@ -67,13 +67,13 @@
                     <span class="input-group-addon"><i class="fa fa-key"></i></span>
                     <?php
                     $item = null;
-                    $valor = null;
+                    $valor = null; 
 
                     $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
 
                     if(!$ventas){
 
-                      echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="10001" readonly>';
+                      echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="1001" readonly>';
 
 
                     }else{
@@ -150,6 +150,8 @@
                 <!--=====================================
                 BOTÓN PARA AGREGAR PRODUCTO
                 ======================================-->
+
+                <button type="button" class="btn btn-default hidden-lg btnAgregarProducto">Agregar producto</button>
 
                 <hr>
 

@@ -74,9 +74,14 @@ session_start();
    <script src="vistas/plugins/input-mask/jquery.inputmask.js"></script>
   <script src="vistas/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
   <script src="vistas/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+
+  <!-- jQuery Number -->
+  <script src="vistas/plugins/jqueryNumber/jquerynumber.min.js"></script>
+
    <!-- Htmls -->
   <script src="vistas/plugins/html2canvas/html2canvas.js"></script>
    <!-- Fontawesome -->
+
   <script
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"

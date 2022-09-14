@@ -63,7 +63,6 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
       	success:function(respuesta){
 
       	    var nombre = respuesta["nombre"];
-          	var stock = respuesta["stock"];
           	var precio = respuesta["precio_venta"];
 
 
@@ -90,7 +89,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
 	          '<div class="col-xs-3">'+
 	            
-	             '<input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" value="1" stock="'+stock+'" nuevoStock="'+Number(stock-1)+'" required>'+
+	             '<input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" value="1" required>'+
 
 	          '</div>' +
 
@@ -199,6 +198,10 @@ $(".formularioVenta").on("click", "button.quitarProducto", function(){
 		$("#nuevoTotalVenta").val(0);
 		$("#totalVenta").val(0);
 		$("#nuevoTotalVenta").attr("total",0);
+		// PONER FORMATO AL PRECIO DE LOS PRODUCTOS
+
+		$(".nuevoTotalVenta").number(true, 2);
+		
 
 	}else{
 
@@ -268,7 +271,7 @@ $(".btnAgregarProducto").click(function(){
 
 	          '<div class="col-xs-3 ingresoCantidad">'+
 	            
-	             '<input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" value="1" stock nuevoStock required>'+
+	             '<input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" value="1" required>'+
 
 	          '</div>' +
 
@@ -307,6 +310,10 @@ $(".btnAgregarProducto").click(function(){
 
 							 sumarTotalPrecios()
 
+							// PONER FORMATO AL PRECIO DE LOS PRODUCTOS
+
+							 $(".nuevoPrecioProducto").number(true, 2);
+
 	         }
 
 
@@ -329,8 +336,6 @@ $(".formularioVenta").on("change", "select.nuevaDescripcionProducto", function()
 	var nuevaDescripcionProducto = $(this).parent().parent().parent().children().children().children(".nuevaDescripcionProducto");
 
 	var nuevoPrecioProducto = $(this).parent().parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
-
-	var nuevaCantidadProducto = $(this).parent().parent().parent().children(".ingresoCantidad").children(".nuevaCantidadProducto");
 
 	var datos = new FormData();
     datos.append("nombreProducto", nombreProducto);
@@ -371,40 +376,15 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function(){
 	
 	precio.val(precioFinal);
 
-	var nuevoStock = Number($(this).attr("stock")) - $(this).val();
 
-	$(this).attr("nuevoStock", nuevoStock);
 
-	if(Number($(this).val()) > Number($(this).attr("stock"))){
-
-		/*=============================================
-		SI LA CANTIDAD ES SUPERIOR AL STOCK REGRESAR VALORES INICIALES
-		=============================================*/
-
-		$(this).val(1);
-
-		var precioFinal = $(this).val() * precio.attr("precioReal");
-
-		precio.val(precioFinal);
-
-		sumarTotalPrecios();
-
-		swal({
-	      title: "La cantidad supera el Stock",
-	      text: "¡Sólo hay "+$(this).attr("stock")+" unidades!",
-	      type: "error",
-	      confirmButtonText: "¡Cerrar!"
-	    });
-
-	    return;
-
-	}
 
 	        // SUMAR TOTAL DE PRECIOS
 
 	        sumarTotalPrecios()
 
 })
+
 
 /*=============================================
 SUMAR TODOS LOS PRECIOS
@@ -433,5 +413,7 @@ function sumarTotalPrecios(){
 	$("#totalVenta").val(sumaTotalPrecio);
 	$("#nuevoTotalVenta").attr("total",sumaTotalPrecio);
 
+	// PONER FORMATO AL PRECIO DE LOS PRODUCTOS
 
+	$(".nuevoTotalVenta").number(true, 2);
 }
