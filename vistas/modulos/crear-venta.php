@@ -140,8 +140,7 @@
                 ======================================--> 
 
                 <div class="form-group row nuevoProducto">
-
-                
+    
 
                 </div>
 
@@ -179,8 +178,10 @@
                         <tr>
                           
                           <td style="width: 50%">
-                            
+ 
+                          <input type="hidden" name="nuevoPrecioImpuesto" id="nuevoPrecioImpuesto" required>
 
+                          <input type="hidden" name="nuevoPrecioNeto" id="nuevoPrecioNeto" required>
 
                           </td>
 
@@ -203,6 +204,7 @@
 
                       </tbody>
 
+
                     </table>
 
                   </div>
@@ -223,7 +225,7 @@
                   
                       <select class="form-control" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
                         <option value="">Seleccione método de pago</option>
-                        <option value="Efectivo">Efectivo</option>
+                        <option value="Efectivo">Contado</option>
                         <option value="TC">Credito</option>               
                       </select>    
 
@@ -252,7 +254,12 @@
         </form>
 
 
+        <?php
 
+          $guardarVenta = new ControladorVentas();
+          $guardarVenta -> ctrCrearVenta();
+          
+        ?>
         </div>
             
       </div>
