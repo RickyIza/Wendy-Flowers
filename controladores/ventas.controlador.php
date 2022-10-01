@@ -32,8 +32,9 @@ class ControladorVentas{
 			$totalProductosComprados=array();
 
 			foreach ($listaProductos as $key => $value) {
+				array_push($totalProductosComprados, $value["cantidad"]);
 				
-				array_push($totalProductosComprados,$value["cantidad"]);
+  				
 
 				$tablaProductos= "productos";
 
@@ -42,32 +43,43 @@ class ControladorVentas{
 				
 				$traerProducto = ModeloProductos::mdlMostrarProductos($tablaProductos,$item,$valor);
 				
-				var_dump($traerProducto["ventas"]);
+
 				
 				$item1a = "ventas";
 				$valor1a = $value["cantidad"]+$traerProducto["ventas"];
 				
 				$nuevasVentas = ModeloProductos::mdlActualizarProducto($tablaProductos, $item1a, $valor1a, $valor);
 
-			}
+ 		}
 
-			$tablaClientes= "clientes";
+			$tablaClientes = "clientes";
 
 			$item = "id";
 			$valor = $_POST["seleccionarCliente"];
 
-			$traerCliente= ModeloClientes::mdlMostrarClientes($tablaClientes,$item,$valor);
+			$traerCliente = ModeloClientes::mdlMostrarClientes($tablaClientes, $item, $valor);
+
+			$item1a = "compras";
+			$valor1a = array_sum($totalProductosComprados) + $traerCliente["compras"];
+
+			$comprasCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1a, $valor1a, $valor);
+/* 
+			$item1b = "ultima_compra";
+
+			date_default_timezone_set('America/Guayaquil');
+
+			$fecha = date('Y-m-d');
+			$hora = date('H:i:s');
+			$valor1b = $fecha.' '.$hora;
+
+			$fechaCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1b, $valor1b, $valor);
 	
-			$item1="compras";
-			$valor1=array_sum($totalProductosComprados) + $traerCliente["compras"];
-
-			$comprasCliente= ModeloClientes::mdlActualizarCliente($tablaClientes,$item,$valor1,$valor);
-
+ */
 			/*=============================================
 			GUARDAR LA COMPRA
 			=============================================*/	
 
-			$tabla = "ventas";
+ 			$tabla = "ventas";
 
 			$datos = array("id_vendedor"=>$_POST["idVendedor"],
 						   "id_cliente"=>$_POST["seleccionarCliente"],
@@ -101,7 +113,7 @@ class ControladorVentas{
 
 				</script>';
 
-			}
+			} 
 			
 		}
 		
