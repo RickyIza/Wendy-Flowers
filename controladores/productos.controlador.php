@@ -26,12 +26,16 @@ class ControladorProductos{
 		if(isset($_POST["nuevoNombre"])){
 
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
-			   preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioVenta"])){
+			   preg_match('/^[0-9.]+$/', $_POST["nuevoLargo"]) &&
+			   preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioVenta"])
+			   
+			   ){
 				$tabla = "productos";
 
 				$datos = array("id_categoria" => $_POST["nuevaCategoria"],
 							   "codigo" => $_POST["nuevoCodigo"],
 							   "nombre" => $_POST["nuevoNombre"],
+							   "largo" => $_POST["nuevoLargo"],
 							   "precio_venta" => $_POST["nuevoPrecioVenta"]);
 
 
@@ -91,7 +95,10 @@ class ControladorProductos{
 		if(isset($_POST["editarNombre"])){
 
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"]) &&
-			   preg_match('/^[0-9.]+$/', $_POST["editarPrecioVenta"])){
+			   preg_match('/^[0-9.]+$/', $_POST["editarLargo"])  &&
+			   preg_match('/^[0-9.]+$/', $_POST["editarPrecioVenta"])
+			   
+			   ){
 
 
 
@@ -100,6 +107,7 @@ class ControladorProductos{
 				$datos = array("id_categoria" => $_POST["editarCategoria"],
 							   "codigo" => $_POST["editarCodigo"],
 							   "nombre" => $_POST["editarNombre"],
+							   "largo" => $_POST["editarLargo"],
 							   "precio_venta" => $_POST["editarPrecioVenta"]);
 
 				$respuesta = ModeloProductos::mdlEditarProducto($tabla, $datos);

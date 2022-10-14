@@ -41,9 +41,10 @@
          <tr>
            
            <th style="width:10px">#</th>
-           <th>Codigo</th>
+           <th style="width:25px">Codigo</th>
            <th>Nombre</th>
-           <th>Categoria</th>
+           <th style="width:25px">Categoria</th>
+           <th>Tamaño</th>
            <th>Precio</th>
            <th>Acciones</th>
 
@@ -71,6 +72,7 @@
                   $categoria = ControladorCategorias::ctrMostrarCategorias($item, $valor);
 
                  echo '<td>'.$categoria["categoria"].'</td>
+                  <td>'.$value["largo"].'</td>
                   <td>'.$value["precio_venta"].'</td>';
  
         }
@@ -131,7 +133,7 @@ MODAL AGREGAR PRODUCTO
 
                 <select class="form-control input-lg" name="nuevaCategoria" id="nuevaCategoria" required>
                   
-                  <option value="">Selecionar catgoria</option>
+                  <option value="">Selecionar categoria</option>
 
                   <?php
 
@@ -174,17 +176,31 @@ MODAL AGREGAR PRODUCTO
               
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-code"></i></span> 
+                <span class="input-group-addon"><i class="fa fa-codepen"></i></span> 
 
                 <input type="text" class="form-control input-lg" id="nuevoCodigo" name="nuevoCodigo" placeholder="Ingresar código" readonly required>
-
+ 
               </div>
 
             </div>
 
 
+             <!-- ENTRADA PARA tamaño -->
 
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-thumb-tack"></i></span> 
 
+                <input type="number" class="form-control input-lg" name="nuevoLargo" min="0" step="any" placeholder="Ingresar el tamaño" required>
+
+                <span class="input-group-addon"><i><b>CM</b></i></span> 
+
+              </div>
+
+            </div>
+  
              <!-- ENTRADA PARA COMPRA -->
 
             <div class="form-group">
@@ -312,6 +328,19 @@ MODAL EDITAR PRODUCTO
             </div>
 
 
+             <!-- ENTRADA PARA COMPRA -->
+
+             <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
+
+                <input type="number" class="form-control input-lg" name="editarLargo" id="editarLargo" min="0" step="any" placeholder="Ingresar el tamaño" required>
+
+              </div>
+
+            </div>
 
 
              <!-- ENTRADA PARA COMPRA -->

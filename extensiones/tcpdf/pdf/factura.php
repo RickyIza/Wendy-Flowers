@@ -25,9 +25,10 @@ $respuestaVenta = ControladorVentas::ctrMostrarVentas($itemVenta, $valorVenta);
 
 $fecha = substr($respuestaVenta["fecha"],0,-8);
 $productos = json_decode($respuestaVenta["productos"], true);
-$neto = number_format($respuestaVenta["neto"],2);
-$impuesto = number_format($respuestaVenta["impuesto"],2);
 $total = number_format($respuestaVenta["total"],2);
+$totalramo = number_format($respuestaVenta["ramo"],2);
+$full = json_decode($respuestaVenta["full"],2);
+
 
 //TRAEMOS LA INFORMACIÓN DEL CLIENTE
 
@@ -259,6 +260,14 @@ foreach ($productos as $key => $item) {
 	
 	$respuestaProducto = ControladorProductos::ctrMostrarProductos($itemProducto, $valorProducto, $orden);
 
+	$valorUnitario = number_format($respuestaProducto["precio_venta"], 2);
+
+	$precioU = number_format($item["precio"], 2);
+
+	$precioR = number_format($item["ramo"], 2);
+
+	$precioT = number_format($item["tallo"], 2);
+
 	$precioTotal = number_format($item["total"], 2);
 // ---------------------------------------------------------
 $bloque3 = <<<EOF
@@ -267,7 +276,7 @@ $bloque3 = <<<EOF
 
 <tr>
 <td style="border: 1px solid #666; color:#333; background-color:white; width:50px; text-align:center">
-$item[cantidad]
+$item[cantidad] $item[full]
 </td>
 <td style="border: 1px solid #666; color:#333; background-color:white; width:80px; text-align:center">
 $item[descripcion]
@@ -279,13 +288,13 @@ $item[descripcion]
 0603.19.0000
 </td>
 <td style="border: 1px solid #666; color:#333; background-color:white; width:70px; text-align:center">
-24
+$precioR
 </td>
 <td style="border: 1px solid #666; color:#333; background-color:white; width:70px; text-align:center">
-24
+$precioT
 </td>
-<td style="border: 1px solid #666; color:#333; background-color:white; width:70px; text-align:center">
-24
+<td style="border: 1px solid #666; color:#333; background-color:white; width:70px; text-align:center">$
+$precioU
 </td>
 <td style="border: 1px solid #666; color:#333; background-color:white; width:70px; text-align:center">
 $precioTotal
@@ -314,7 +323,7 @@ TOTAL INVOCE \ FACTURA
 <td style="border: 1px solid #666; color:#333; background-color:white; width:70px; text-align:center">
 </td>
 <td style="border: 1px solid #666; color:#333; background-color:white; width:70px; text-align:center">
-24
+$totalramo
 </td>
 <td style="border: 1px solid #666; color:#333; background-color:white; width:70px; text-align:center">
 24
@@ -351,7 +360,7 @@ $bloque5 = <<<EOF
 </td>
 <td style="width:50px">
 <div style="font-size:9px; border: 1px solid black; text-align:center; line-height:20px;">
-0.50
+$full
 </div>
 </td>
 <td style="width:200px">
@@ -366,7 +375,7 @@ $bloque5 = <<<EOF
 </td>
 <td style="width:160px">
 <div style="font-size:9px; text-align:center; line-height:20px;">
-<b>FUL&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;HB&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;QB&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;OCT&nbsp;&nbsp;&nbsp;&nbsp;0</b>
+<b>FUL&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;HB&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;QB&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;OCT&nbsp;&nbsp;&nbsp;&nbsp;0</b>
 </div>
 </td>
 </tr>
@@ -436,6 +445,7 @@ $pdf->writeHTML($bloque7, false, false, false, false, '');
 
 //SALIDA DEL ARCHIVO 
 
+ob_end_clean();
 $pdf->Output('factura.pdf');
 
 }	

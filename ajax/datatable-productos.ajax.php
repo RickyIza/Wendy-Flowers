@@ -49,6 +49,7 @@ class TablaProductos{
 			      "'.$productos[$i]["codigo"].'",
 			      "'.$productos[$i]["nombre"].'",
 			      "'.$categorias["categoria"].'",
+				  "'.$productos[$i]["largo"].'",
 			      "'.$productos[$i]["precio_venta"].'",
 			      "'.$botones.'"
 			    ],';

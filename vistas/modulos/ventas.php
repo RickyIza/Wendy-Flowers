@@ -34,6 +34,16 @@
 
         </a>
 
+        <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+           
+           <span>
+             <i class="fa fa-calendar"></i> Rango de fecha
+           </span>
+
+           <i class="fa fa-caret-down"></i>
+
+        </button>
+
       </div>
 
       <div class="box-body">
@@ -62,10 +72,19 @@
         
         <?php
 
-          $item = null;
-          $valor = null;
+          if(isset($_GET["fechaInicial"])){
 
-          $respuesta = ControladorVentas::ctrMostrarVentas($item, $valor);
+            $fechaInicial = $_GET["fechaInicial"];
+            $fechaFinal = $_GET["fechaFinal"];
+
+          }else{
+
+            $fechaInicial = null;
+            $fechaFinal = null;
+
+          }
+
+          $respuesta = ControladorVentas::ctrRangoFechasVentas($fechaInicial, $fechaFinal);
 
           foreach ($respuesta as $key => $value) {
            
@@ -88,12 +107,19 @@
 
                   $respuestaUsuario = ControladorUsuarios::ctrMostrarUsuarios($itemUsuario, $valorUsuario);
 
-                  echo '<td>'.$respuestaUsuario["nombre"].'</td>
+                  echo '<td>'.$respuestaUsuario["nombre"].'</td>';
+                  
+                  if($value["estado"] != 0){
 
-                  <td>COBRAR</td>
+                    echo '<td><button class="btn btn-success btn-xs" idUsuario="'.$value["id"].'" estadoUsuario="0">PAGADO</button></td>';
 
+                  }else{
 
-                  <td>$ '.number_format($value["total"],2).'</td>
+                    echo '<td><button class="btn btn-danger btn-xs" idUsuario="'.$value["id"].'" estadoUsuario="1">COBRAR</button></td>';
+
+                  }  
+
+                  echo '<td>$ '.number_format($value["total"],2).'</td>
 
                   <td>'.$value["fecha"].'</td>
 
@@ -125,7 +151,12 @@
 
        </table>
 
+       <?php
 
+      $eliminarVenta = new ControladorVentas();
+      $eliminarVenta -> ctrEliminarVenta();
+
+      ?>
 
       </div>
 

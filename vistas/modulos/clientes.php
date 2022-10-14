@@ -84,7 +84,7 @@
 
                     <td>'.$value["compras"].'</td>
 
-                    <td>'.$value["fecha"].'</td>
+                    <td>'.$value["ultima_compra"].'</td>
 
                     <td>
 

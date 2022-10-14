@@ -1,18 +1,3 @@
-/*=============================================
-CARGAR LA TABLA DINÁMICA DE PRODUCTOS
-=============================================*/
-
-// $.ajax({
-
-// 	url: "ajax/datatable-productos.ajax.php",
-// 	success:function(respuesta){
-		
-// 		console.log("respuesta", respuesta);
-
-// 	}
-
-// })
-
 $('.tablaProductos').DataTable( {
     "ajax": "ajax/datatable-productos.ajax.php",
     "deferRender": true,
@@ -133,6 +118,8 @@ $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
            $("#editarCodigo").val(respuesta["codigo"]);
 
            $("#editarNombre").val(respuesta["nombre"]);
+
+           $("#editarLargo").val(respuesta["largo"]);
 
            $("#editarPrecioVenta").val(respuesta["precio_venta"]);
 
